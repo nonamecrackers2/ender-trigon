@@ -1,0 +1,26 @@
+{
+	"baby_dragon_egg_breaks": 
+	{
+    	"category": "blocks",
+    	"subtitle": "endertrigon.subtitle.baby_dragon_egg_breaks",
+    	"sounds": 
+    	[
+    		{
+    			"type": "event",
+    			"name": "minecraft:entity.turtle.egg_break"
+    		}
+    	]
+	},
+	"dragon_lays_egg": 
+	{
+    	"category": "blocks",
+    	"subtitle": "endertrigon.subtitle.dragon_lays_egg",
+    	"sounds": 
+    	[
+    		{
+    			"type": "event",
+    			"name": "minecraft:entity.turtle.lay_egg"
+    		}
+    	]
+	}
+}

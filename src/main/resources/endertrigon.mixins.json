@@ -1,0 +1,23 @@
+{
+	"required": true,
+	"package": "nonamecrackers2.endertrigon.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"refmap": "endertrigon.refmap.json",
+	"mixins": [
+		"MixinEnderDragon",
+		"IMixinEnderDragon",
+		"MixinDragonStrafePlayerPhase",
+		"MixinDragonChargePlayerPhase",
+		"MixinDragonFireball",
+		"MixinDragonHoldingPatternPhase",
+		"IMixinEnderDragonPhase",
+		"MixinPlayer",
+		"MixinEnderDragonPart",
+		"MixinEnderDragonPhaseManager"
+	],
+	"client": [
+		"MixinEnderDragonRenderer",
+		"MixinEnderDragonModel"
+	],
+	"minVersion": "0.8"
+}

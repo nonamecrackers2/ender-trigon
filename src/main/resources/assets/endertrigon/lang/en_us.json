@@ -1,0 +1,9 @@
+{
+	"entity.endertrigon.baby_ender_dragon": "Baby Ender Dragon",
+	"entity.endertrigon.dragon_flame": "Dragon Flame",
+	"block.endertrigon.baby_dragon_egg": "Baby Dragon Egg",
+	"death.attack.dragonFlame": "%1$s was incinerated by %2$s",
+  	"death.attack.dragonFlame.item": "%1$s was incinerated by %2$s using %3$s",
+  	"endertrigon.subtitle.baby_dragon_egg_breaks": "Baby Dragon Egg Breaks",
+  	"endertrigon.subtitle.dragon_lays_egg": "Ender Dragon Lays Egg"
+}
