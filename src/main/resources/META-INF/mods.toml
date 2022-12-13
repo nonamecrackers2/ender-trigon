@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[41,)"
+loaderVersion="[44,)"
 license="All rights reserved"
 
 [[mods]]
@@ -28,13 +28,13 @@ For SB737
 [[dependencies.endertrigon]]
     modId="forge"
     mandatory=true
-    versionRange="[41.1.0,)"
+    versionRange="[44.0.17,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.endertrigon]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,1.20)"
+    versionRange="[1.19.3,1.20)"
     ordering="NONE"
     side="BOTH"

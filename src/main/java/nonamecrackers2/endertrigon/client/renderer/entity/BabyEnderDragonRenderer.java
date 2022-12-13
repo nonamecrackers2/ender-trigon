@@ -17,7 +17,7 @@
 package nonamecrackers2.endertrigon.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -53,9 +53,9 @@ public class BabyEnderDragonRenderer extends MobRenderer<BabyEnderDragon, BabyEn
 	{
 		float f = (float)dragon.getLatency(7, partialTicks)[0];
 		float f1 = (float)(dragon.getLatency(5, partialTicks)[1] - dragon.getLatency(10, partialTicks)[1]);
-		stack.mulPose(Vector3f.YP.rotationDegrees(-f + 180.0F));
-		stack.mulPose(Vector3f.XP.rotationDegrees(f1 * 10.0F));
-		stack.mulPose(Vector3f.ZP.rotationDegrees(Mth.wrapDegrees(-f1) * 10.0F));
+		stack.mulPose(Axis.YP.rotationDegrees(-f + 180.0F));
+		stack.mulPose(Axis.XP.rotationDegrees(f1 * 10.0F));
+		stack.mulPose(Axis.ZP.rotationDegrees(Mth.wrapDegrees(-f1) * 10.0F));
 	}
 	
 	@Override

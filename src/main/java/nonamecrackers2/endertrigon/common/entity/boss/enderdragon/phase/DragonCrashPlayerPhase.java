@@ -29,6 +29,7 @@ import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FluidState;
@@ -65,7 +66,7 @@ public class DragonCrashPlayerPhase extends AbstractDragonPhaseInstance
 			this.timeSinceCharge++;
 			if (this.dragon.inWall && ForgeEventFactory.getMobGriefingEvent(this.dragon.level, this.dragon))
 			{
-				Explosion explosion = this.dragon.level.explode(this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 7.0F, Explosion.BlockInteraction.NONE);
+				Explosion explosion = this.dragon.level.explode(this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 7.0F, Level.ExplosionInteraction.NONE);
 				int radius = 3;
 				for (int x = -radius; x < radius; x++)
 				{

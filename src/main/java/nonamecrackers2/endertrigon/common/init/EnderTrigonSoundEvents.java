@@ -16,6 +16,8 @@
 
 package nonamecrackers2.endertrigon.common.init;
 
+import java.util.Optional;
+
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -37,6 +39,6 @@ public class EnderTrigonSoundEvents
 	
 	private static RegistryObject<SoundEvent> create(String id)
 	{
-		return SOUND_EVENTS.register(id, () -> new SoundEvent(EnderTrigonMod.id(id)));
+		return SOUND_EVENTS.register(id, () -> SoundEvent.createVariableRangeEvent(EnderTrigonMod.id(id)));
 	}
 }

@@ -58,6 +58,7 @@ public class EnderTrigonMod
 		EnderTrigonSoundEvents.register(modBus);
 		EnderTrigonItems.register(modBus);
 		modBus.addListener(EnderTrigonEntityTypes::registerAttributes);
+		modBus.addListener(EnderTrigonItems::buildCreativeTabContents);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			modBus.register(EnderTrigonRenderers.class);
 		});

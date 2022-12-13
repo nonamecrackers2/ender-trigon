@@ -18,7 +18,7 @@ package nonamecrackers2.endertrigon.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
@@ -36,7 +36,7 @@ public class DragonRendererAdditions
 		float f1 = (float) (Math.sin((double) (f * ((float) Math.PI * 2F) - 1.0F)) + 1.0D);
 		f1 = (f1 * f1 + f1 * 2.0F) * 0.05F;
 		stack.translate(0.0D, (double) (f1 - 2.0F), -3.0D);
-		stack.mulPose(Vector3f.XP.rotationDegrees(f1 * 2.0F));
+		stack.mulPose(Axis.XP.rotationDegrees(f1 * 2.0F));
 		float f8 = f * ((float) Math.PI * 2F);
 
 		EnderDragonHead[] otherHeads = ((EnderDragonExtension)dragon).getOtherHeads();
