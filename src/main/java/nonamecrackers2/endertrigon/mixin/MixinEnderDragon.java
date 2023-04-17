@@ -27,7 +27,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -84,7 +83,7 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 			{
 				if (!NON_KNOCKBACKABLE.test(entity) && !this.getSelf().getPassengers().contains(entity))
 				{
-					entity.hurt(DamageSource.mobAttack(this), 10.0F);
+					entity.hurt(this.damageSources().mobAttack(this), 10.0F);
 					this.doEnchantDamageEffects(this, entity);
 				}
 			}
@@ -108,7 +107,7 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 				entity.push(d2 / d4 * 4.0D, (double) 0.2F, d3 / d4 * 4.0D);
 				if (!self.getPhaseManager().getCurrentPhase().isSitting() && living.getLastHurtByMobTimestamp() < entity.tickCount - 2)
 				{
-					entity.hurt(DamageSource.mobAttack(this), 5.0F);
+					entity.hurt(this.damageSources().mobAttack(this), 5.0F);
 					this.doEnchantDamageEffects(this, entity);
 				}
 			}

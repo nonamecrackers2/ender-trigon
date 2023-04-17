@@ -16,8 +16,6 @@
 
 package nonamecrackers2.endertrigon.common.init;
 
-import java.util.Optional;
-
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

@@ -22,7 +22,6 @@ import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,6 +33,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.entity.PartEntity;
 import net.minecraftforge.event.ForgeEventFactory;
+import nonamecrackers2.endertrigon.common.init.EnderTrigonDamageTypes;
 import nonamecrackers2.endertrigon.common.init.EnderTrigonEntityTypes;
 
 public class DragonFlame extends AbstractHurtingProjectile
@@ -111,7 +111,7 @@ public class DragonFlame extends AbstractHurtingProjectile
 	
 	public static DamageSource flame(DragonFlame flame, @Nullable Entity hit)
 	{
-		return hit == null ? (new IndirectEntityDamageSource("onFire", flame, flame)).setIsFire().setProjectile() : (new IndirectEntityDamageSource("dragonFlame", flame, hit)).setIsFire().setProjectile();
+		return hit == null ? flame.damageSources().onFire() : (EnderTrigonDamageTypes.dragonFlame(flame, hit));
 	}
 	
 	@Override

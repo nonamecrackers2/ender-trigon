@@ -72,7 +72,7 @@ public class DragonCrashPlayerPhase extends AbstractDragonPhaseInstance
 				{
 					for (int z = -radius; z < radius; z++)
 					{
-						BlockPos pos = new BlockPos(this.dragon.getX() + x, 0.0D, this.dragon.getZ() + z);
+						BlockPos pos = BlockPos.containing(this.dragon.getX() + x, 0.0D, this.dragon.getZ() + z);
 						pos = this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).below();
 						BlockState state = this.dragon.level.getBlockState(pos);
 						FluidState fluid = this.dragon.level.getFluidState(pos);

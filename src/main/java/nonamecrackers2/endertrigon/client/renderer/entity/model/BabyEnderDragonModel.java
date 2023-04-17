@@ -184,7 +184,6 @@ public class BabyEnderDragonModel extends EntityModel<BabyEnderDragon>
 		this.dragon = entity;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void setupAnim(BabyEnderDragon entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) 
 	{
@@ -192,7 +191,7 @@ public class BabyEnderDragonModel extends EntityModel<BabyEnderDragon>
 		this.jaw.xRot = (float)(Math.sin(flap * ((float)Math.PI * 2.0F)) + 1.0D) * 0.2F;
 		double[] baseLatency = entity.getLatency(6, this.partialTicks);
 		float flapPi = flap * ((float)Math.PI * 2.0F);
-		float roll = Mth.rotWrap(entity.getLatency(5, this.partialTicks)[0] + ((Mth.rotWrap(entity.getLatency(5, this.partialTicks)[0] - entity.getLatency(10, this.partialTicks)[0])) / 2.0F));
+		float roll = (float) Mth.wrapDegrees(entity.getLatency(5, this.partialTicks)[0] + ((Mth.wrapDegrees(entity.getLatency(5, this.partialTicks)[0] - entity.getLatency(10, this.partialTicks)[0])) / 2.0F));
 		
 		for (int i = 0; i < this.neckPieces.length; i++)
 		{
@@ -209,18 +208,18 @@ public class BabyEnderDragonModel extends EntityModel<BabyEnderDragon>
 			ModelPart piece = this.neckPieces[i];
 			double[] latency = entity.getLatency(this.neckPieces.length - i, this.partialTicks);
 			float xOffset = Mth.cos(i * 0.45F + flapPi) * 0.15F;
-			piece.yRot = Mth.rotWrap(latency[0] - baseLatency[0]) * ((float)Math.PI / 180.0F);
+			piece.yRot = (float) Mth.wrapDegrees(latency[0] - baseLatency[0]) * ((float)Math.PI / 180.0F);
 			piece.xRot = (xOffset + (float)baseLatency[1] - (float)latency[1]) * 0.25F;
-			piece.zRot = -Mth.rotWrap(latency[0] - (double)roll) * ((float)Math.PI / 180.0F);
+			piece.zRot = (float) -Mth.wrapDegrees(latency[0] - (double)roll) * ((float)Math.PI / 180.0F);
 			piece.yRot -= prevY;
 			piece.xRot -= prevX;
 			piece.zRot -= prevZ;
 		}
 		
 		double[] headLatency = entity.getLatency(0, this.partialTicks);
-		this.head.yRot = Mth.rotWrap(headLatency[0] - baseLatency[0]) * ((float)Math.PI / 180.0F);
+		this.head.yRot = (float) Mth.wrapDegrees(headLatency[0] - baseLatency[0]) * ((float)Math.PI / 180.0F);
 		this.head.xRot = 0.0F;
-		this.head.zRot = -Mth.rotWrap(headLatency[0] - (double)roll) * ((float)Math.PI / 180.0F);
+		this.head.zRot = (float) -Mth.wrapDegrees(headLatency[0] - (double)roll) * ((float)Math.PI / 180.0F);
 		
 		this.leftWing.xRot = 0.125F - Mth.cos(flapPi) * 0.2F;
 		this.leftWing.yRot = -0.25F;
@@ -246,9 +245,9 @@ public class BabyEnderDragonModel extends EntityModel<BabyEnderDragon>
 			ModelPart piece = this.tailPieces[i];
 			double[] latency = entity.getLatency(12 + i, this.partialTicks);
 			float xOffset = Mth.cos(i * 0.45F + flapPi) * 0.05F;
-			piece.yRot = (Mth.rotWrap(latency[0] - baseLatency[0]) * 0.25F) * ((float)Math.PI / 180.0F);
+			piece.yRot = (float) (Mth.wrapDegrees(latency[0] - baseLatency[0]) * 0.25F) * ((float)Math.PI / 180.0F);
 			piece.xRot = -(xOffset + (float)(baseLatency[1] - (float)latency[1]) * ((float)Math.PI / 180F) * 2.5F);
-			piece.zRot = Mth.rotWrap(latency[0] - (double)roll) * ((float)Math.PI / 180.0F) * 0.2F;
+			piece.zRot = (float) Mth.wrapDegrees(latency[0] - (double)roll) * ((float)Math.PI / 180.0F) * 0.2F;
 			piece.yRot -= prevY;
 			piece.xRot -= prevX;
 			piece.zRot -= prevZ;

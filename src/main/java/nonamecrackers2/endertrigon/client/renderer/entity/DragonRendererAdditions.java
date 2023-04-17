@@ -46,8 +46,8 @@ public class DragonRendererAdditions
 			int latencyOffset = otherHeads[j].getLatencyOffset();
 			
 			double[] adouble = dragon.getLatencyPos(6 + latencyOffset, partialTicks);
-			float f6 = Mth.rotWrap(dragon.getLatencyPos(5 + latencyOffset, partialTicks)[0] - dragon.getLatencyPos(10, partialTicks)[0]);
-			float f7 = Mth.rotWrap(dragon.getLatencyPos(5 + latencyOffset, partialTicks)[0] + (double) (f6 / 2.0F));
+			float f6 = (float) Mth.wrapDegrees(dragon.getLatencyPos(5 + latencyOffset, partialTicks)[0] - dragon.getLatencyPos(10, partialTicks)[0]);
+			float f7 = (float) Mth.wrapDegrees(dragon.getLatencyPos(5 + latencyOffset, partialTicks)[0] + (double) (f6 / 2.0F));
 			
 			jaws[j].xRot = (float)(Math.sin((double)(f * ((float)Math.PI * 2F)) + 400.0D * (j + 1)) + 1.0D) * 0.2F;
 			float x = 0.0F;
@@ -58,9 +58,9 @@ public class DragonRendererAdditions
 			{
 				double[] adouble1 = dragon.getLatencyPos(5 + latencyOffset - i, partialTicks);
 				float f9 = (float) Math.cos((double) ((float) i * 0.45F + f8)) * 0.15F;
-				necks[j].yRot = Mth.rotWrap(adouble1[0] - adouble[0] + otherHeads[j].getRenderYRotOffset()) * ((float) Math.PI / 180F) * 1.5F;
+				necks[j].yRot = (float) (Mth.wrapDegrees(adouble1[0] - adouble[0] + otherHeads[j].getRenderYRotOffset()) * ((float) Math.PI / 180F) * 1.5F);
 				necks[j].xRot = f9 + (dragon.getHeadPartYOffset(i, adouble, adouble1) + otherHeads[j].getRenderXRotOffset()) * ((float) Math.PI / 180F) * 1.5F * 3.0F;
-				necks[j].zRot = -Mth.rotWrap(adouble1[0] - (double) f7) * ((float) Math.PI / 180F) * 1.5F;
+				necks[j].zRot = (float) (-Mth.wrapDegrees(adouble1[0] - (double) f7) * ((float) Math.PI / 180F) * 1.5F);
 				necks[j].y = y;
 				necks[j].z = z;
 				necks[j].x = x;
@@ -74,9 +74,9 @@ public class DragonRendererAdditions
 			heads[j].z = z;
 			heads[j].x = x;
 			double[] adouble2 = dragon.getLatencyPos(0 + latencyOffset , partialTicks);
-			heads[j].yRot = Mth.rotWrap(adouble2[0] - adouble[0]) * ((float) Math.PI / 180F);
-			heads[j].xRot = Mth.rotWrap((double) dragon.getHeadPartYOffset(6, adouble, adouble2)) * ((float) Math.PI / 180F) * 1.5F * 5.0F;
-			heads[j].zRot = -Mth.rotWrap(adouble2[0] - (double) f7) * ((float) Math.PI / 180F);
+			heads[j].yRot = (float) (Mth.wrapDegrees(adouble2[0] - adouble[0]) * ((float) Math.PI / 180F));
+			heads[j].xRot = (float) (Mth.wrapDegrees((double) dragon.getHeadPartYOffset(6, adouble, adouble2)) * ((float) Math.PI / 180F) * 1.5F * 5.0F);
+			heads[j].zRot = (float) (-Mth.wrapDegrees(adouble2[0] - (double) f7) * ((float) Math.PI / 180F));
 			heads[j].render(stack, consumer, packedLight, overlayTexture, 1.0F, 1.0F, 1.0F, a);
 		}
 
