@@ -47,6 +47,6 @@ public abstract class MixinEnderDragonPhaseManager
 	)
 	public void setPhaseInvoke(EnderDragonPhase<?> phase, CallbackInfo ci)
 	{
-		LOGGER.info("Dragon is now in phase {} on the {}", phase, this.dragon.level.isClientSide ? "client" : "server");
+		LOGGER.info("Dragon is now in phase {} on the {}", phase, this.dragon.level().isClientSide ? "client" : "server");
 	}
 }

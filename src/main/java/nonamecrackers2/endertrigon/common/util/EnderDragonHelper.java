@@ -34,8 +34,8 @@ public class EnderDragonHelper
 {
 	public static void doDragonFlame(EnderDragon dragon)
 	{
-		BlockPos pos = dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(EndPodiumFeature.END_PODIUM_LOCATION));
-		Player player = dragon.level.getNearestPlayer(TargetingConditions.forCombat(), dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+		BlockPos pos = dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(BlockPos.ZERO));
+		Player player = dragon.level().getNearestPlayer(TargetingConditions.forCombat(), dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
 		if (player != null && dragon.hasLineOfSight(player))
 		{
 			float angle = (float)(Mth.atan2(player.getX() - dragon.getX(), player.getZ() - dragon.getZ()) * (180.0D / Math.PI));
@@ -52,10 +52,10 @@ public class EnderDragonHelper
 				double yDelta = (player.getEyeY() - y) * 2.0D;
 				double zDelta = (player.getZ() - z) * 2.0D;
 				if (!dragon.isSilent() && dragon.tickCount % 4 == 0)
-					dragon.level.playSound(null, head.head.blockPosition(), SoundEvents.ENDER_DRAGON_SHOOT, SoundSource.HOSTILE, 10.0F, dragon.getRandom().nextFloat());
-				DragonFlame flame = new DragonFlame(dragon.level, dragon, xDelta, yDelta, zDelta);
+					dragon.level().playSound(null, head.head.blockPosition(), SoundEvents.ENDER_DRAGON_SHOOT, SoundSource.HOSTILE, 10.0F, dragon.getRandom().nextFloat());
+				DragonFlame flame = new DragonFlame(dragon.level(), dragon, xDelta, yDelta, zDelta);
 				flame.moveTo(x, y, z, 0.0F, 0.0F);
-				dragon.level.addFreshEntity(flame);
+				dragon.level().addFreshEntity(flame);
 			}
 		}
 	}

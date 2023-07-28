@@ -107,8 +107,8 @@ public class BabyEnderDragon extends FlyingMob implements Enemy
 	@Override
 	public void onFlap()
 	{
-		if (this.level.isClientSide && !this.isSilent())
-			this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ENDER_DRAGON_FLAP, this.getSoundSource(), 5.0F, 1.7F + this.random.nextFloat() * 0.3F, false);
+		if (this.level().isClientSide && !this.isSilent())
+			this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ENDER_DRAGON_FLAP, this.getSoundSource(), 5.0F, 1.7F + this.random.nextFloat() * 0.3F, false);
 	}
 	
 	public double[] getLatency(int pointer, float partialTicks)
@@ -156,7 +156,7 @@ public class BabyEnderDragon extends FlyingMob implements Enemy
 		Vec3 delta = this.getDeltaMovement();
 		float flapPower = 0.2F / ((float)delta.horizontalDistance() * 2.0F + 1.0F);
 		this.flapTime += flapPower;
-		if (this.level.isClientSide)
+		if (this.level().isClientSide)
 			this.processFlappingMovement();
 	}
 	
@@ -213,6 +213,7 @@ public class BabyEnderDragon extends FlyingMob implements Enemy
 		return true;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType type, SpawnGroupData groupData, CompoundTag data)
 	{

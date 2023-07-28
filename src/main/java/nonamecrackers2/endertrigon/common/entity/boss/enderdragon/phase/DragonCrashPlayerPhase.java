@@ -53,7 +53,7 @@ public class DragonCrashPlayerPhase extends AbstractDragonPhaseInstance
 	public void doClientTick()
 	{
 		if (this.dragon.inWall)
-			this.dragon.level.playLocalSound(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), SoundEvents.ENDER_DRAGON_GROWL, this.dragon.getSoundSource(), 10.0F, 0.8F + this.dragon.getRandom().nextFloat() * 0.3F, false);
+			this.dragon.level().playLocalSound(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), SoundEvents.ENDER_DRAGON_GROWL, this.dragon.getSoundSource(), 10.0F, 0.8F + this.dragon.getRandom().nextFloat() * 0.3F, false);
 	}
 	
 	@Override
@@ -64,23 +64,23 @@ public class DragonCrashPlayerPhase extends AbstractDragonPhaseInstance
 			EnderDragonHelper.moveUnrestrictedY(this.dragon, this.target.position().add(0.0D, -2.0D, 0.0D), this.getTurnSpeed(), 0.5F, 0.9D);
 			
 			this.timeSinceCharge++;
-			if (this.dragon.inWall && ForgeEventFactory.getMobGriefingEvent(this.dragon.level, this.dragon))
+			if (this.dragon.inWall && ForgeEventFactory.getMobGriefingEvent(this.dragon.level(), this.dragon))
 			{
-				Explosion explosion = this.dragon.level.explode(this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 7.0F, Level.ExplosionInteraction.NONE);
+				Explosion explosion = this.dragon.level().explode(this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 7.0F, Level.ExplosionInteraction.NONE);
 				int radius = 3;
 				for (int x = -radius; x < radius; x++)
 				{
 					for (int z = -radius; z < radius; z++)
 					{
 						BlockPos pos = BlockPos.containing(this.dragon.getX() + x, 0.0D, this.dragon.getZ() + z);
-						pos = this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).below();
-						BlockState state = this.dragon.level.getBlockState(pos);
-						FluidState fluid = this.dragon.level.getFluidState(pos);
+						pos = this.dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).below();
+						BlockState state = this.dragon.level().getBlockState(pos);
+						FluidState fluid = this.dragon.level().getFluidState(pos);
 						ExplosionDamageCalculator calculator = new ExplosionDamageCalculator();
-						Optional<Float> resistance = calculator.getBlockExplosionResistance(explosion, this.dragon.level, pos, state, fluid);
+						Optional<Float> resistance = calculator.getBlockExplosionResistance(explosion, this.dragon.level(), pos, state, fluid);
 						if (resistance.isPresent() && !state.isAir() && resistance.get() < 20.0F && this.dragon.getRandom().nextInt(12) == 0)
 						{
-							FallingBlockEntity block = FallingBlockEntity.fall(this.dragon.level, pos, state);
+							FallingBlockEntity block = FallingBlockEntity.fall(this.dragon.level(), pos, state);
 							block.time = 560;
 							double xDelta = block.getX() - this.dragon.getX();
 							double zDelta = block.getZ() - this.dragon.getZ();

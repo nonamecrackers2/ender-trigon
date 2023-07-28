@@ -68,7 +68,7 @@ public class BabyEnderDragonAttackStrategyGoal extends Goal
 	@Override
 	public void stop()
 	{
-		this.dragon.setAnchor(this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, this.dragon.getAnchor()).above(10 + this.dragon.getRandom().nextInt(5)));
+		this.dragon.setAnchor(this.dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, this.dragon.getAnchor()).above(10 + this.dragon.getRandom().nextInt(5)));
 	}
 	
 	private void setAnchorAboveTarget()

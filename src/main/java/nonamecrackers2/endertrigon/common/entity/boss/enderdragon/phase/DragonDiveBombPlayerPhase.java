@@ -54,9 +54,9 @@ public class DragonDiveBombPlayerPhase extends AbstractDragonPhaseInstance
 				if (this.dragon.position().distanceTo(target) < 8.0D && this.dragon.getRandom().nextInt(8) == 0 || this.dragon.tickCount % 120 == 0)
 				{
 					BlockPos pos = this.dragon.blockPosition();
-					if (this.dragon.level.getBlockState(pos).isAir())
+					if (this.dragon.level().getBlockState(pos).isAir())
 					{
-						FallingBlockEntity entity = FallingBlockEntity.fall(this.dragon.level, pos, EnderTrigonBlocks.BABY_DRAGON_EGG.get().defaultBlockState());
+						FallingBlockEntity entity = FallingBlockEntity.fall(this.dragon.level(), pos, EnderTrigonBlocks.BABY_DRAGON_EGG.get().defaultBlockState());
 						entity.setDeltaMovement(this.dragon.getRandom().nextGaussian() * 0.2D, 0.0D, this.dragon.getRandom().nextGaussian() * 0.2D);
 						this.eggsDropped++;
 						this.dragon.playSound(EnderTrigonSoundEvents.ENDER_DRAGON_LAYS_EGG.get(), 10.0F, 1.0F);

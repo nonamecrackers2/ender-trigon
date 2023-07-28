@@ -18,6 +18,7 @@ package nonamecrackers2.endertrigon.common.entity.boss.enderdragon.phase;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.enderdragon.phases.AbstractDragonPhaseInstance;
@@ -42,7 +43,7 @@ public class DragonCarryPlayerPhase extends AbstractDragonPhaseInstance
 	{
 		if (this.target != null && this.target.getVehicle() == this.dragon)
 		{
-			Vec3 pos = Vec3.atBottomCenterOf(this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.END_PODIUM_LOCATION).above(20));
+			Vec3 pos = Vec3.atBottomCenterOf(this.dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(BlockPos.ZERO)).above(20));
 			EnderDragonHelper.moveUnrestrictedY(this.dragon, pos, this.getTurnSpeed(), 0.3F);
 			if (this.dragon.position().distanceTo(pos) < 10 && this.dragon.getRandom().nextInt(2) == 0)
 			{

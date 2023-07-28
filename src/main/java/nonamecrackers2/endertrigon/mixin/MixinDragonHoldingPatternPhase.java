@@ -53,8 +53,8 @@ public abstract class MixinDragonHoldingPatternPhase extends AbstractDragonPhase
 		int i = this.dragon.getDragonFight() == null ? 0 : this.dragon.getDragonFight().getCrystalsAlive();
 		if (this.dragon.tickCount % 20 == 0 && this.dragon.getRandom().nextInt(i + 3) == 0)
 		{
-			BlockPos pos = this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(EndPodiumFeature.END_PODIUM_LOCATION));
-			Player player = this.dragon.level.getNearestPlayer(getTargeting(), this.dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+			BlockPos pos = this.dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(BlockPos.ZERO));
+			Player player = this.dragon.level().getNearestPlayer(getTargeting(), this.dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
 			if (player != null && this.dragon.hasLineOfSight(player))
 			{
 				Vec3 view = this.dragon.getViewVector(1.0F);
@@ -65,10 +65,10 @@ public abstract class MixinDragonHoldingPatternPhase extends AbstractDragonPhase
 				double yDelta = player.getY(0.5D) - y;
 				double zDelta = player.getZ() - z;
 				if (!this.dragon.isSilent())
-					this.dragon.level.levelEvent((Player)null, 1017, this.dragon.blockPosition(), 0);
-				DragonFireball fireball = new DragonFireball(this.dragon.level, this.dragon, xDelta, yDelta, zDelta);
+					this.dragon.level().levelEvent((Player)null, 1017, this.dragon.blockPosition(), 0);
+				DragonFireball fireball = new DragonFireball(this.dragon.level(), this.dragon, xDelta, yDelta, zDelta);
 				fireball.moveTo(x, y, z, 0.0F, 0.0F);
-				this.dragon.level.addFreshEntity(fireball);
+				this.dragon.level().addFreshEntity(fireball);
 				this.findNewTarget();
 			}
 		}

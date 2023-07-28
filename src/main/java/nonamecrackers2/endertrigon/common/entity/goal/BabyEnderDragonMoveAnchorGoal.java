@@ -73,13 +73,13 @@ public class BabyEnderDragonMoveAnchorGoal extends BabyEnderDragonMoveTargetGoal
 		if (this.touchingTarget())
 			this.selectNext();
 		
-		if (this.dragon.getMoveTarget().y < this.dragon.getY() && !this.dragon.level.isEmptyBlock(this.dragon.blockPosition().below()))
+		if (this.dragon.getMoveTarget().y < this.dragon.getY() && !this.dragon.level().isEmptyBlock(this.dragon.blockPosition().below()))
 		{
 			this.height = Math.max(1.0F, this.height);
 			this.selectNext();
 		}
 		
-		if (this.dragon.getMoveTarget().y > this.dragon.getY() && !this.dragon.level.isEmptyBlock(this.dragon.blockPosition().above()))
+		if (this.dragon.getMoveTarget().y > this.dragon.getY() && !this.dragon.level().isEmptyBlock(this.dragon.blockPosition().above()))
 		{
 			this.height =  Math.min(-1.0F, this.height);
 			this.selectNext();

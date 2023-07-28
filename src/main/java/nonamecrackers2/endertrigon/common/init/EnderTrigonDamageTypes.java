@@ -36,6 +36,6 @@ public class EnderTrigonDamageTypes
 	
 	public static DamageSource dragonFlame(Entity entity, Entity target)
 	{
-		return source(entity.level.registryAccess(), DRAGON_FLAME, entity, target);
+		return source(entity.level().registryAccess(), DRAGON_FLAME, entity, target);
 	}
 }

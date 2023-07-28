@@ -19,7 +19,7 @@ package nonamecrackers2.endertrigon.common.init;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,9 +37,9 @@ public class EnderTrigonItems
 		ITEMS.register(modBus);
 	}
 	
-	public static void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event)
+	public static void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event)
 	{
-		if (event.getTab() == CreativeModeTabs.SPAWN_EGGS)
+		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
 			event.accept(BABY_DRAGON_EGG::get);
 	}
 }

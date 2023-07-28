@@ -115,12 +115,12 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 	}
 	
 	@Override
-	public void positionRider(Entity entity)
+	public void positionRider(Entity entity, Entity.MoveFunction moveFunction)
 	{
-		super.positionRider(entity);
+		super.positionRider(entity, moveFunction);
 		EnderDragonHead head = this.getOtherHeads()[EnderDragonExtension.THIRD_HEAD];
 		if (entity.distanceTo(head.head) < 20.0D)
-			entity.setPos(head.head.getX(), head.head.getY(), head.head.getZ());
+			moveFunction.accept(entity, head.head.getX(), head.head.getY(), head.head.getZ());
 	}
 	
 	@Override

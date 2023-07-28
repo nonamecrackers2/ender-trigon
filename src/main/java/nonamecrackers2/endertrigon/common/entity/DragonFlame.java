@@ -52,7 +52,7 @@ public class DragonFlame extends AbstractHurtingProjectile
 	public void tick()
 	{
 		super.tick();
-		if (!this.level.isClientSide && this.tickCount > 40)
+		if (!this.level().isClientSide && this.tickCount > 40)
 			this.discard();
 	}
 	
@@ -60,7 +60,7 @@ public class DragonFlame extends AbstractHurtingProjectile
 	protected void onHitEntity(EntityHitResult result)
 	{
 		super.onHitEntity(result);
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide)
 		{
 			Entity hit = result.getEntity();
 			Entity owner = this.getOwner();
@@ -87,14 +87,14 @@ public class DragonFlame extends AbstractHurtingProjectile
 	protected void onHitBlock(BlockHitResult result)
 	{
 		super.onHitBlock(result);
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide)
 		{
 			Entity owner = this.getOwner();
-			if (!(owner instanceof Mob) || ForgeEventFactory.getMobGriefingEvent(this.level, owner))
+			if (!(owner instanceof Mob) || ForgeEventFactory.getMobGriefingEvent(this.level(), owner))
 			{
 				BlockPos pos = result.getBlockPos().relative(result.getDirection());
-				if (this.level.isEmptyBlock(pos))
-					this.level.setBlockAndUpdate(pos, BaseFireBlock.getState(this.level, pos));
+				if (this.level().isEmptyBlock(pos))
+					this.level().setBlockAndUpdate(pos, BaseFireBlock.getState(this.level(), pos));
 			}
 			this.discard();
 		}

@@ -51,14 +51,14 @@ public class DragonChargeUpPhase extends AbstractDragonSittingPhase
 	@Override
 	public void doClientTick()
 	{
-		this.dragon.level.playLocalSound(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), SoundEvents.ENDER_DRAGON_GROWL, this.dragon.getSoundSource(), 10.0F, 0.8F + this.dragon.getRandom().nextFloat() * 0.3F, false);
+		this.dragon.level().playLocalSound(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), SoundEvents.ENDER_DRAGON_GROWL, this.dragon.getSoundSource(), 10.0F, 0.8F + this.dragon.getRandom().nextFloat() * 0.3F, false);
 	}
 	
 	@Override
 	public void doServerTick()
 	{
-		BlockPos pos = this.dragon.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(EndPodiumFeature.END_PODIUM_LOCATION));
-		Player player = this.dragon.level.getNearestPlayer(CHARGE_TARGETING, this.dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+		BlockPos pos = this.dragon.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(BlockPos.ZERO));
+		Player player = this.dragon.level().getNearestPlayer(CHARGE_TARGETING, this.dragon, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
 		this.chargeUpTicks++;
 		if (this.chargeUpTicks > CHARGE_UP_TIME)
 		{
