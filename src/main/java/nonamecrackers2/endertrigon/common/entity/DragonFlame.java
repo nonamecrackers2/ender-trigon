@@ -31,8 +31,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.entity.PartEntity;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.entity.PartEntity;
+import net.neoforged.neoforge.event.EventHooks;
 import nonamecrackers2.endertrigon.common.init.EnderTrigonDamageTypes;
 import nonamecrackers2.endertrigon.common.init.EnderTrigonEntityTypes;
 
@@ -90,7 +90,7 @@ public class DragonFlame extends AbstractHurtingProjectile
 		if (!this.level().isClientSide)
 		{
 			Entity owner = this.getOwner();
-			if (!(owner instanceof Mob) || ForgeEventFactory.getMobGriefingEvent(this.level(), owner))
+			if (!(owner instanceof Mob) || EventHooks.getMobGriefingEvent(this.level(), owner))
 			{
 				BlockPos pos = result.getBlockPos().relative(result.getDirection());
 				if (this.level().isEmptyBlock(pos))

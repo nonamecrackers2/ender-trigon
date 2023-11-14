@@ -28,7 +28,6 @@ import nonamecrackers2.endertrigon.common.util.EnderDragonExtension;
 
 public class DragonRendererAdditions
 {
-	@SuppressWarnings("deprecation")
 	public static void renderExtra(PoseStack stack, VertexConsumer consumer, int packedLight, int overlayTexture, float r, float g, float b, float a, EnderDragon dragon, float partialTicks, ModelPart[] heads, ModelPart[] jaws, ModelPart[] necks)
 	{
 		stack.pushPose();

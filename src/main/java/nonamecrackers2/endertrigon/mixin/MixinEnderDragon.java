@@ -20,11 +20,14 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.world.entity.Entity;
@@ -48,13 +51,14 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 	{
 		return entity instanceof BabyEnderDragon;
 	};
+	@Shadow
+	private EnderDragonPart[] subEntities;
+	private EnderDragonHead[] otherHeads;
 	
 	private MixinEnderDragon(EntityType<? extends Mob> type, Level level)
 	{
 		super(type, level);
 	}
-
-	private EnderDragonHead[] otherHeads;
 
 	@Inject(
 		method = "<init>",
@@ -71,7 +75,7 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 				new EnderDragonHead(this.getSelf(), head2, neck2, 30.0F, 5.0F, 18.0F, -0.5F, 2)
 		};
 		var entities = new EnderDragonPart[] {head1, neck1, head2, neck2};
-		this.getSelf().subEntities = ArrayUtils.addAll(this.getSelf().subEntities, entities);
+		this.subEntities = ArrayUtils.addAll(this.subEntities, entities);
 	}
 	
 	@Overwrite

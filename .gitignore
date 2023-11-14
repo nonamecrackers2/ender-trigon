@@ -20,9 +20,7 @@ build
 # other
 eclipse
 run
+runs
+run-data
 
-# Files from Forge MDK
-forge*changelog.txt
-
-# watermark
-src/main/java/nonamecrackers2/endertrigon/client/overlay
+repo

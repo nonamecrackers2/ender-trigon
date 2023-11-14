@@ -25,7 +25,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.DragonFireball;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.entity.PartEntity;
+import net.neoforged.neoforge.entity.PartEntity;
 
 @Mixin(DragonFireball.class)
 public abstract class MixinDragonFireball extends AbstractHurtingProjectile

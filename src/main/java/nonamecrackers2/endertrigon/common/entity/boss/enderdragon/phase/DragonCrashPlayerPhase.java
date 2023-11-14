@@ -34,7 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 import nonamecrackers2.endertrigon.EnderTrigonMod;
 import nonamecrackers2.endertrigon.common.util.EnderDragonHelper;
 
@@ -64,7 +64,7 @@ public class DragonCrashPlayerPhase extends AbstractDragonPhaseInstance
 			EnderDragonHelper.moveUnrestrictedY(this.dragon, this.target.position().add(0.0D, -2.0D, 0.0D), this.getTurnSpeed(), 0.5F, 0.9D);
 			
 			this.timeSinceCharge++;
-			if (this.dragon.inWall && ForgeEventFactory.getMobGriefingEvent(this.dragon.level(), this.dragon))
+			if (this.dragon.inWall && EventHooks.getMobGriefingEvent(this.dragon.level(), this.dragon))
 			{
 				Explosion explosion = this.dragon.level().explode(this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ(), 7.0F, Level.ExplosionInteraction.NONE);
 				int radius = 3;

@@ -20,11 +20,10 @@ package nonamecrackers2.endertrigon;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
 import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.loading.FMLEnvironment;
 import nonamecrackers2.endertrigon.client.init.EnderTrigonRenderers;
 import nonamecrackers2.endertrigon.common.entity.boss.enderdragon.phase.DragonCarryPlayerPhase;
 import nonamecrackers2.endertrigon.common.entity.boss.enderdragon.phase.DragonChargeUpPhase;
@@ -59,9 +58,8 @@ public class EnderTrigonMod
 		EnderTrigonItems.register(modBus);
 		modBus.addListener(EnderTrigonEntityTypes::registerAttributes);
 		modBus.addListener(EnderTrigonItems::buildCreativeTabContents);
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+		if (FMLEnvironment.dist.isClient())
 			modBus.register(EnderTrigonRenderers.class);
-		});
 	}
 	
 	public static ResourceLocation id(String path)

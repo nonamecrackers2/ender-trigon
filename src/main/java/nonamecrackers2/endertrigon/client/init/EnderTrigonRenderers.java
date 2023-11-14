@@ -16,8 +16,8 @@
 
 package nonamecrackers2.endertrigon.client.init;
 
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import nonamecrackers2.endertrigon.client.renderer.entity.BabyEnderDragonRenderer;
 import nonamecrackers2.endertrigon.client.renderer.entity.DragonFlameRenderer;
 import nonamecrackers2.endertrigon.client.renderer.entity.model.BabyEnderDragonModel;
