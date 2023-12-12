@@ -16,26 +16,26 @@
 
 package nonamecrackers2.endertrigon.common.init;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
 import nonamecrackers2.endertrigon.EnderTrigonMod;
 
 public class EnderTrigonSoundEvents
 {
-	private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, EnderTrigonMod.MODID);
+	private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, EnderTrigonMod.MODID);
 	
-	public static final RegistryObject<SoundEvent> BABY_DRAGON_EGG_BREAKS = create("baby_dragon_egg_breaks");
-	public static final RegistryObject<SoundEvent> ENDER_DRAGON_LAYS_EGG = create("dragon_lays_egg");
+	public static final DeferredHolder<SoundEvent, SoundEvent> BABY_DRAGON_EGG_BREAKS = create("baby_dragon_egg_breaks");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ENDER_DRAGON_LAYS_EGG = create("dragon_lays_egg");
 	
 	public static void register(IEventBus modBus)
 	{
 		SOUND_EVENTS.register(modBus);
 	}
 	
-	private static RegistryObject<SoundEvent> create(String id)
+	private static DeferredHolder<SoundEvent, SoundEvent> create(String id)
 	{
 		return SOUND_EVENTS.register(id, () -> SoundEvent.createVariableRangeEvent(EnderTrigonMod.id(id)));
 	}

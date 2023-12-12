@@ -121,6 +121,20 @@ tasks.withType(ProcessResources).configureEach {
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
     }
+    
+    var resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
+    var intoTargets = ["$rootDir/bin/main/"]
+    intoTargets.each { target ->
+        if (file(target).exists()) {
+            copy {
+                from(sourceSets.main.resources) {
+                    include resourceTargets
+                    expand replaceProperties
+                }
+                into target
+            }
+        }
+    }
 }
 
 // Example configuration to allow publishing using the maven-publish plugin

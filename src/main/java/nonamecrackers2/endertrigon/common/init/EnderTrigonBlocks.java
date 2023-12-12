@@ -16,21 +16,19 @@
 
 package nonamecrackers2.endertrigon.common.init;
 
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
 import nonamecrackers2.endertrigon.EnderTrigonMod;
 import nonamecrackers2.endertrigon.common.block.BabyDragonEgg;
 
 public class EnderTrigonBlocks
 {	
-	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EnderTrigonMod.MODID);
+	private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(EnderTrigonMod.MODID);
 	
-	public static final RegistryObject<BabyDragonEgg> BABY_DRAGON_EGG = BLOCKS.register("baby_dragon_egg", () -> new BabyDragonEgg(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F).lightLevel((state) -> 1).noOcclusion()));
+	public static final DeferredBlock<BabyDragonEgg> BABY_DRAGON_EGG = BLOCKS.register("baby_dragon_egg", () -> new BabyDragonEgg(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F).lightLevel((state) -> 1).noOcclusion()));
 	
 	public static void register(IEventBus modBus)
 	{
