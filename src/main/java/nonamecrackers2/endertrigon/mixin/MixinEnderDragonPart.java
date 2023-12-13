@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.world.entity.boss.EnderDragonPart;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.level.Explosion;
 import net.neoforged.neoforge.entity.PartEntity;
 import nonamecrackers2.endertrigon.EnderTrigonMod;
 
@@ -32,7 +33,7 @@ public abstract class MixinEnderDragonPart extends PartEntity<EnderDragon>
 	}
 	
 	@Override
-	public boolean ignoreExplosion()
+	public boolean ignoreExplosion(Explosion explosion)
 	{
 		return this.getParent().getPhaseManager().getCurrentPhase().getPhase() == EnderTrigonMod.CRASH_PLAYER;
 	}

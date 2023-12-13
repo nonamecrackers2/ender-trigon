@@ -35,6 +35,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.boss.EnderDragonPart;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import nonamecrackers2.endertrigon.EnderTrigonMod;
@@ -136,7 +137,7 @@ public abstract class MixinEnderDragon extends Mob implements EnderDragonExtensi
 	}
 	
 	@Override
-	public boolean ignoreExplosion()
+	public boolean ignoreExplosion(Explosion explosion)
 	{
 		return this.getSelf().getPhaseManager().getCurrentPhase().getPhase() == EnderTrigonMod.CRASH_PLAYER;
 	}
