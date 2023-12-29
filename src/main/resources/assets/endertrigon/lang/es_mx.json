@@ -1,0 +1,9 @@
+{
+	"entity.endertrigon.baby_ender_dragon": "Dragón bebé",
+	"entity.endertrigon.dragon_flame": "Flama de dragón",
+	"block.endertrigon.baby_dragon_egg": "Huevo de dragón bebé",
+	"death.attack.dragonFlame": "%1$s fue incinerado por %2$s",
+	"death.attack.dragonFlame.item": "%1$s fue incinerado por %2$s usando %3$s",
+	"endertrigon.subtitle.baby_dragon_egg_breaks": "Huevo de dragón bebé rompiéndose",
+	"endertrigon.subtitle.dragon_lays_egg": "Dragón deja un huevo"
+}
